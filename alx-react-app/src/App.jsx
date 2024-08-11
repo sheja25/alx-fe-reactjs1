@@ -3,8 +3,8 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import WelcomeMessage from './components/WelcomeMessage'
-import HeaderMessage from './components/Header'
-import FooterMessage from './components/Footer'
+import Header from './components/Header'
+import Footer from './components/Footer'
 import MainContent from './components/MainContent'
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
       </div>
       <h1>Vite + React</h1>
       <WelcomeMessage />
-      <HeaderMessage />
+      <Header />
       <MainContent />
       <div className="card">
         <button onClick={() => setCount((count) => count + 1)}>
@@ -35,7 +35,7 @@ function App() {
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
-      <FooterMessage />
+      <Footer />
     </>
   )
 }

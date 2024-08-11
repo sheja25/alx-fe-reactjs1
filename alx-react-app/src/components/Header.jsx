@@ -1,4 +1,4 @@
-function HeaderMessage() {
+function Header() {
     return (
     <header>
     <h1>My Favorite Cities</h1>
@@ -6,4 +6,4 @@ function HeaderMessage() {
     );
 }
 
-export default HeaderMessage;
+export default Header;
