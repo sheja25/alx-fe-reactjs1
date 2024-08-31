@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
 
 const PostsComponent = () => {
-    const { isLoading, isError, data, error } = useQuery('posts', async () => {
+    const { isLoading, isError, data, error, refetch } = useQuery('posts', async () => {
         const response = await fetch('https://jsonplaceholder.typicode.com/posts');
         if (!response.ok) {
             throw new Error('Failed to fetch posts');
@@ -20,6 +20,10 @@ const PostsComponent = () => {
         fetchPosts();
     }, []);
 
+    const handleRefetch = () => {
+        refetch();
+    };
+
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -31,6 +35,7 @@ const PostsComponent = () => {
     return (
         <div>
             <h1>Posts</h1>
+            <button onClick={handleRefetch}>Refetch Posts</button>
             {data.map((post) => (
                 <div key={post.id}>
                     <h2>{post.title}</h2>
