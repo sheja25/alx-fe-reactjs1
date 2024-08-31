@@ -1,5 +1,5 @@
 import './App.css'
-import { BrowserRouter as Router, Switch, Route, Link, Redirect } from 'react-router-dom';
+import { BrowserRouter as Routes, Switch, Route, Link, Redirect } from 'react-router-dom';
 import Profile from './components/Profile';
 import ProfileDetails from './components/ProfileDetails';
 import ProfileSettings from './components/ProfileSettings';
@@ -8,7 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 function App() {
   return (
-    <Router>
+    <Routes>
       <div>
         <nav>
           <ul>
@@ -44,7 +44,7 @@ function App() {
           </Route>
         </Switch>
       </div>
-    </Router>
+    </Routes>
   )
 }
 
