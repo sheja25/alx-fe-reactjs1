@@ -10,10 +10,25 @@ const RegistrationForm = () => {
         e.preventDefault();
 
         // Basic validation to check if any field is empty
-        if (!username || !email || !password) {
-            setErrors({ message: 'Please fill in all fields' });
-            return;
-        }
+        const validateForm = () => {
+            const Errors = {};
+        
+            if (!username) {
+                Errors.username = 'Please enter a username';
+            }
+        
+            if (!email) {
+                Errors.email = 'Please enter an email';
+            }
+        
+            if (!password) {
+                Errors.password = 'Please enter a password';
+            }
+        
+            setErrors(Errors);
+        
+            return Object.keys(Errors).length === 0;
+          };
 
         // Handle form submission logic here
         // ...
@@ -28,6 +43,7 @@ const RegistrationForm = () => {
     return (
         <form onSubmit={handleSubmit}>
             {errors.message && <p>{errors.message}</p>}
+            validateForm();
             <label>
                 Username:
                 <input
