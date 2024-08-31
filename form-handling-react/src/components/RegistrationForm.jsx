@@ -6,29 +6,35 @@ const RegistrationForm = () => {
     const [password, setPassword] = useState('');
     const [errors, setErrors] = useState({});
 
+    const validateForm = () => {
+        const Errors = {};
+
+        if (!username) {
+            Errors.username = 'Please enter a username.';
+        }
+
+        if (!email) {
+            Errors.email = 'Please enter an email.';
+        }
+
+        if (!password) {
+            Errors.password = 'Please enter a password.';
+        }
+
+        setErrors(Errors);
+
+        return Object.keys(Errors).length === 0;
+    };
+
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        // Basic validation to check if any field is empty
-        const validateForm = () => {
-            const Errors = {};
-        
-            if (!username) {
-                Errors.username = 'Please enter a username';
-            }
-        
-            if (!email) {
-                Errors.email = 'Please enter an email';
-            }
-        
-            if (!password) {
-                Errors.password = 'Please enter a password';
-            }
-        
-            setErrors(Errors);
-        
-            return Object.keys(Errors).length === 0;
-          };
+        // Validate the form
+        const isValid = validateForm();
+
+        if (!isValid) {
+            return;
+        }
 
         // Handle form submission logic here
         // ...
@@ -42,8 +48,9 @@ const RegistrationForm = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            {errors.message && <p>{errors.message}</p>}
-            validateForm();
+            {errors.username && <p>{errors.username}</p>}
+            {errors.email && <p>{errors.email}</p>}
+            {errors.password && <p>{errors.password}</p>}
             <label>
                 Username:
                 <input
