@@ -4,13 +4,14 @@ const RegistrationForm = () => {
     const [username, setUsername] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [errors, setErrors] = useState({});
 
     const handleSubmit = (e) => {
         e.preventDefault();
 
         // Basic validation to check if any field is empty
         if (!username || !email || !password) {
-            alert('Please fill in all fields');
+            setErrors({ message: 'Please fill in all fields' });
             return;
         }
 
@@ -21,10 +22,12 @@ const RegistrationForm = () => {
         setUsername('');
         setEmail('');
         setPassword('');
+        setErrors({});
     };
 
     return (
         <form onSubmit={handleSubmit}>
+            {errors.message && <p>{errors.message}</p>}
             <label>
                 Username:
                 <input
