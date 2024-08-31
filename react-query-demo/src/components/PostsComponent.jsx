@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useQuery } from 'react-query';
 
 const PostsComponent = () => {
@@ -8,7 +8,17 @@ const PostsComponent = () => {
             throw new Error('Failed to fetch posts');
         }
         return response.json();
+    }, {
+        cacheTime: 30000, // Set cache time to 30 seconds
+        staleTime: 60000, // Set stale time to 1 minute
+        refetchOnWindowFocus: false, // Disable refetching on window focus
+        keepPreviousData: true, // Keep previous data while fetching new data
     });
+
+    useEffect(() => {
+        // Fetch posts on component mount
+        fetchPosts();
+    }, []);
 
     if (isLoading) {
         return <div>Loading...</div>;
@@ -32,6 +42,7 @@ const PostsComponent = () => {
 };
 
 export default PostsComponent;
+
 const fetchPosts = async () => {
     const response = await fetch('https://jsonplaceholder.typicode.com/posts');
     if (!response.ok) {
@@ -39,7 +50,3 @@ const fetchPosts = async () => {
     }
     return response.json();
 };
-
-useEffect(() => {
-    fetchPosts();
-}, []);
