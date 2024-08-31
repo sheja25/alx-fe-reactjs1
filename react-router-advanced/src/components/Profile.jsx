@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom';
-
+import { BrowserRouter as Routes, Switch, Route, Link, Redirect } from 'react-router-dom';
 import ProfileDetails from './ProfileDetails';
 import ProfileSettings from './ProfileSettings';
 
