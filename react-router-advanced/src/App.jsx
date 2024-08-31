@@ -39,6 +39,9 @@ function App() {
           <Route exact path="/profile/settings">
             <ProfileSettings />
           </Route>
+          <Route exact path="/blog/:id">
+            <BlogPost />
+          </Route>
         </Switch>
       </div>
     </Router>
