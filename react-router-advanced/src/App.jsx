@@ -27,19 +27,19 @@ function App() {
           </ul>
         </nav>
         <Switch>
-          <Route exact path="/">
+          <Route  path="/">
             <Home />
           </Route>
           <ProtectedRoute>
            <Profile />
           </ProtectedRoute>
-          <Route exact path="/profile/details">
+          <Route  path="/profile/details">
             <ProfileDetails />
           </Route>
-          <Route exact path="/profile/settings">
+          <Route  path="/profile/settings">
             <ProfileSettings />
           </Route>
-          <Route exact path="/blog/:id">
+          <Route  path="/blog/:id">
             <BlogPost />
           </Route>
         </Switch>
