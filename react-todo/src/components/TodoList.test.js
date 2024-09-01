@@ -1,7 +1,8 @@
 const React = require('react');
 const { render, screen, fireEvent } = require('@testing-library/react');
 require('@testing-library/jest-dom'); 
-const TodoList = require('../components/TodoList');
+const TodoList = require('../TodoList');
+
 
 describe('TodoList Component', function() {
   it('renders initial todos', function() {
